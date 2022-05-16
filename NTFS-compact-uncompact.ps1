@@ -44,7 +44,7 @@ $Kernel32 = Add-Type -MemberDefinition $MethodDefinition -Name ‘Kernel32’ -N
 $logfilespec = "c:\Logfolder\*.log"
 
 # compact anything older than three days
-foreach ($File in (Get-ChildItem -Path $logfilespec -Recurse -File).Where({$_.LastWriteTime -gt (Get-Date).AddDays(-3) -and $_.Attributes  -notmatch [System.IO.FileAttributes]::Compressed})) {
+foreach ($File in (Get-ChildItem -Path $logfilespec -Recurse -File).Where({$_.LastWriteTime -lt (Get-Date).AddDays(-3) -and $_.Attributes  -notmatch [System.IO.FileAttributes]::Compressed})) {
     $FileObject = [System.IO.File]::Open($File.FullName,'Open','ReadWrite','None')
     $Method = [Win32.Kernel32+FileTools]::Compact($FileObject.Handle)
     $FileObject.Close()
