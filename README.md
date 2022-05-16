@@ -1,5 +1,5 @@
 # NTFS-Compression
-Use NTFS-Compression in powershell WITHOUT calling conpact.exe, a "pure powershell" method. Solves following issues:
+Use NTFS-Compression in powershell WITHOUT calling compact.exe, a "pure powershell" method. Solves following issues:
  - Can handle filenames with spaces
  - Can handle filenames with "&" character
  - Can handle unicode filenamed from, for example, Japan.
